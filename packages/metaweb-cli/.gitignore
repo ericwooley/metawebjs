@@ -1,0 +1,6 @@
+*.dist.js
+test_output/
+dist/
+### Typings ###
+## Ignore downloaded typings
+typings

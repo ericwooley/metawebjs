@@ -1,0 +1,13 @@
+{
+  "globalDependencies": {
+    "commander": "registry:dt/commander#2.3.0+20160317120654",
+    "mocha": "registry:env/mocha#2.2.5+20160926180742",
+    "node": "registry:env/node#4.0.0+20161105011511",
+    "shelljs": "registry:dt/shelljs#0.0.0+20161003183410"
+  },
+  "dependencies": {
+    "chai": "registry:npm/chai#3.5.0+20160723033700",
+    "chalk": "registry:npm/chalk#1.1.1+20160812215109",
+    "lodash": "registry:npm/lodash#4.0.0+20161015015725"
+  }
+}
