@@ -17,7 +17,6 @@ function clearOldTestDir () {
 	}
 }
 describe('init', () => {
-	clearOldTestDir()
 	afterEach(clearOldTestDir)
 	it('should create a new directory', () => {
 		init(testDir, {silent: true, location: tempDir})
