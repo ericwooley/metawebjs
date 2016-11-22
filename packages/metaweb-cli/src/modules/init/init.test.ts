@@ -3,9 +3,11 @@ import * as fs from 'fs'
 import init from './init'
 import * as path from 'path'
 import * as shelljs from 'shelljs'
+import * as os from 'os'
 const currentPath = shelljs.pwd()
 const testDir = 'test_output'
-const testDirPath = path.join('./', testDir)
+const tempDir = os.tmpdir()
+const testDirPath = path.join(tempDir, testDir)
 function clearOldTestDir () {
 	try {
 		shelljs.cd(currentPath)
@@ -15,19 +17,20 @@ function clearOldTestDir () {
 	}
 }
 describe('init', () => {
-	beforeEach(clearOldTestDir)
+	clearOldTestDir()
 	afterEach(clearOldTestDir)
 	it('should create a new directory', () => {
-		try {
-			init(testDir, {silent: false})
-		} catch (e) {
-
-		}
+		init(testDir, {silent: true, location: tempDir})
 		const dir = fs.lstatSync(testDirPath)
 		expect(dir.isDirectory()).to.be.true
 	})
+	it('should initialize lerna', () => {
+		init(testDir, {silent: true, location: tempDir})
+		const filesInPath = shelljs.ls('-A', testDirPath)
+		expect(filesInPath.slice()).to.eql([ '.git', 'lerna.json', 'package.json', 'packages'])
+	})
 	it('should throw an error when the directory already exists', () => {
 		fs.mkdirSync(testDirPath)
-		expect(() => {init(testDir, {silent: false})}).to.throw(`${testDir} already exists`)
+		expect(() => {init(testDir, {silent: true, location: tempDir})}).to.throw(`${testDir} already exists`)
 	})
 })
