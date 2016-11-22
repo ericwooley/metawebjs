@@ -2,13 +2,13 @@
   "name": "metaweb-cli",
   "version": "0.0.1",
   "description": "Command line tool for metawebjs",
-  "main": "dist/index.js",
-  "bin": "dist/index.js",
+  "main": "dist/cli.js",
+  "bin": "dist/cli.js",
   "scripts": {
     "build": "tsc",
     "prepublish": "npm run build",
-    "test": "mocha --require ts-node/register src/modules/**/*.test.ts --reporter list",
-    "test-watch": "mocha --watch src/ --watch-extensions tsx,ts --require ts-node/register src/modules/**/*.test.ts --reporter list"
+    "test": "mocha --require ts-node/register src/**/*.test.ts --reporter list",
+    "test-watch": "mocha --watch src/ --watch-extensions tsx,ts --require ts-node/register --recursive './src/**/*.test.ts'  --reporter list"
   },
   "keywords": [
     "metaweb",
@@ -18,13 +18,16 @@
   "author": "Eric Wooley",
   "license": "MIT",
   "dependencies": {
-    "chai": "^3.5.0",
     "chalk": "^1.1.3",
     "commander": "^2.9.0",
     "lerna": "^2.0.0-beta.30",
     "lodash": "^4.17.2",
+    "shelljs": "^0.7.5"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
     "mocha": "^3.1.2",
-    "shelljs": "^0.7.5",
+    "sinon": "^1.17.6",
     "ts-node": "^1.7.0",
     "typescript": "^2.0.10"
   }
