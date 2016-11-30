@@ -1,8 +1,11 @@
 {
   "globalDependencies": {
     "commander": "registry:dt/commander#2.3.0+20160317120654",
+    "dustjs-linkedin": "registry:dt/dustjs-linkedin#1.2.1+20160819031347",
     "mocha": "registry:env/mocha#2.2.5+20160926180742",
     "node": "registry:env/node#4.0.0+20161105011511",
+    "promise": "registry:dt/promise#7.1.1+20160602154553",
+    "recursive-readdir": "registry:dt/recursive-readdir#1.2.1+20160317120654",
     "shelljs": "registry:dt/shelljs#0.0.0+20161003183410"
   },
   "dependencies": {

@@ -8,6 +8,7 @@ describe('cli', () => {
 		let cliSpies: {
 			init?: sinon.SinonSpy
 		}
+
 		beforeEach(() => {
 			cliSpies = {
 				init: sinon.spy()
