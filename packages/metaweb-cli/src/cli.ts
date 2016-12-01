@@ -41,7 +41,14 @@ export default function cli({init, generate}: IModules, options = initializedPro
 				location: options.location || defaultOptions.location
 			})
 		} else if (options.generate) {
-			generate(options.generate, {}, {})
+			generate(options.generate, {
+				CLI_VERSION: packageMeta.version,
+				CURRENT_DATE: new Date().toDateString(),
+				MODULE_NAME: options.generate
+			}, {
+				location: options.location || defaultOptions.location,
+				silent: !!options.silent
+			})
 		}
 	} catch (e) {
 		console.error(chalk.red('========== OOOPS, looks like there was a problem =========='))
