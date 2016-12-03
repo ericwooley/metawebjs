@@ -1,5 +1,5 @@
 import * as recursive from 'recursive-readdir'
-import * as dust from 'dustjs-linkedin'
+import {template} from 'lodash'
 import * as fs from 'fs'
 import {merge} from 'lodash'
 import * as Promise from 'promise'
@@ -54,7 +54,7 @@ export function writeFile (file: string, contents: string, {
 	mkdirBehavior
 }: IWriteFileOptions) {
 	return new Promise(resolve => {
-		mkdirBehavior('-p', file.split(path.sep).slice(0, -1))
+		mkdirBehavior('-p', file.split(path.sep).slice(0, -1).join(path.sep))
 		writeBehavior(file, contents, (err: Error) => {
 			if (err) throw err
 			resolve(file)
@@ -63,16 +63,17 @@ export function writeFile (file: string, contents: string, {
 }
 
 
-export function processFile (file: string, vars: IVars, {readBehavior}: {readBehavior: typeof fs.readFile}) {
-	return new Promise(resolve => {
+export function processFile (file: string, vars: IVars = {}, {readBehavior}: {readBehavior: typeof fs.readFile}) {
+	return new Promise((resolve, reject) => {
 		readBehavior(file, (err, fileContents) => {
 			if (err) throw err
-			var compiled = dust.compile(fileContents.toString(), file);
-			dust.loadSource(compiled);
-			dust.render(file, vars, function(err, out) {
-				if (err) throw err
-				resolve(out)
-			});
+			try{
+				var compiled = template(fileContents.toString());
+			} catch (e) {
+				reject(e)
+			}
+			var compiled = template(fileContents.toString());
+			resolve(compiled(vars));
 		})
 	})
 }
