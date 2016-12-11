@@ -1,0 +1,10 @@
+/* Add your global styles here. Avoid anything specific.
+
+EG, background, link colors, application main with, fonts etc.
+
+If you need selectors, you are probably getting too specific.
+
+*/
+body {
+	background: rgb(240, 240, 240)
+}

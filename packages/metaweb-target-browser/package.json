@@ -1,0 +1,24 @@
+{
+  "name": "metaweb-target-browser",
+  "version": "0.0.1",
+  "description": "metaweb target for browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --config webpack.config.js"
+  },
+  "author": "Eric Wooley <ericwooley@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.20.0",
+    "babel-loader": "^6.2.9",
+    "babel-preset-latest": "^6.16.0",
+    "clean-webpack-plugin": "^0.1.14",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^2.0.0-beta.4",
+    "html-loader": "^0.4.4",
+    "style-loader": "^0.13.1",
+    "webpack": "v2.1.0-beta.27"
+  }
+}

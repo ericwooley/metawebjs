@@ -4,8 +4,6 @@ import * as sinon from 'sinon'
 import {merge} from 'lodash'
 import {expect} from 'chai'
 
-
-
 describe('generate', () => {
 	let options: IGenerateOptions
 	let spies: {
