@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-
+import WidgetLoader from '../widgetLoader'
 export default class App extends Component {
   render() {
     return (
-      <h1>Hello, world.</h1>
+      <div>
+	  	<WidgetLoader widget='lodash' />
+	  </div>
     );
   }
 }
