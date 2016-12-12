@@ -10,7 +10,8 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/static/',
+		libraryTarget: 'umd'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

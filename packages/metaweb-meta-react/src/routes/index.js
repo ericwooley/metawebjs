@@ -4,7 +4,10 @@ export default class App extends Component {
   render() {
     return (
       <div>
-	  	<WidgetLoader widget='lodash' />
+	  	<WidgetLoader loadWidget={(cb) =>
+			  require.ensure([], (require) =>
+			  	cb(require('lodash')
+			))} />
 	  </div>
     );
   }
